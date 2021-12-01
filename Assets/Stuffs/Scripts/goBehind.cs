@@ -9,7 +9,7 @@ public class goBehind : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "body")
+        if (collision.gameObject.name == "Player")
         {
             if (endCondition)
             {

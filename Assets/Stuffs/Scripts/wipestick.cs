@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class wipestick : MonoBehaviour
 {
-    public bool displayExplosive = false;
-    public GameObject vaporizationParticle;
+    public bool destryoElement = true;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name != "body" || collision.gameObject.name != "Front Wheel" || collision.gameObject.name != "Rear Wheel" || collision.gameObject.name != "Rear Wheel 2")
+        if (collision.gameObject.name != "Player" && !collision.gameObject.name.Contains("Wiper"))
         {
-            if (displayExplosive)
+            if (destryoElement)
             {
-                Instantiate(vaporizationParticle, collision.gameObject.transform.position, Quaternion.identity);
+                Debug.Log("Destroyed " + collision.gameObject);
+                Destroy(collision.gameObject);//Destroy the object that the stick collided with
             }
-            Debug.Log("Destroyed " + collision.gameObject);
-            Destroy(collision.gameObject);//Destroy the object that the stick collided with
+            else
+            {
+                Debug.Log("Disabled " + collision.gameObject);
+                collision.gameObject.SetActive(false);
+            }
         }
     }
 }
