@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class seasonalcolorchanger : MonoBehaviour
 {
-    public GameObject[] objectsToChange;
+    private GameObject[] objectsToChange;
     private GameObject sunTime;
 
     void Start()
     {
         sunTime = GameObject.Find("Sun Spinner");
         InvokeRepeating("SlowUpdate", 0.0f, 10f);
+        objectsToChange = GameObject.FindGameObjectsWithTag("SEASONAL");
     }
 
-    void SlowUpdate()
+    public void SlowUpdate()
     {
         float time = sunTime.GetComponent<sunTime>().currentSeason;
         if (time < 1)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class randomGen : MonoBehaviour
 {
+    seasonalcolorchanger cscs;
 
     //mainCamera
     private GameObject mainCamera;
@@ -30,6 +31,7 @@ public class randomGen : MonoBehaviour
         oldmainCameraXEnemy = mainCamera.transform.position.x;
         oldmainCameraXWorld = mainCamera.transform.position.x;
         dificulty = 0;
+        cscs = gameObject.GetComponent<seasonalcolorchanger>();
     }
 
     void Update()
@@ -50,6 +52,7 @@ public class randomGen : MonoBehaviour
             int num = Random.Range(0, maps.Length);
             GameObject hp2 = Instantiate(maps[num]);
             hp2.transform.position = new Vector3(newmainCameraX + mapHOff, mapVOff, mapZOff);
+            cscs.SlowUpdate();
         }
     }
 }
